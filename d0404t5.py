@@ -6,10 +6,9 @@ class TreeNode:
 
 class Solution:
     
-    def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
-        self.path = []
-        self.walks(root)
-        return self.path
+    def maxDepth(self, root: Optional[TreeNode]) -> int:
+        return self.s(root)
+        pass 
 
     def walks(self, node):
         if node==None:
@@ -18,8 +17,12 @@ class Solution:
         self.path.append(node.val)
    
         self.walks(node.right)
-    
-    def maxDepth(self, root: Optional[TreeNode]) -> int:
+
+    def s(self, node):
+        if node is None:
+            return 0 
         
-        pass 
+        length = 1 
+        return max( self.s(node.left), self.s(node.right) ) + 1
+    
     
